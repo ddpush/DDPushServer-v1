@@ -71,6 +71,7 @@ public class NIOPushListener implements Runnable {
 		
 		selector = Selector.open();
 		channel.register(selector, SelectionKey.OP_ACCEPT);
+		System.out.println("NIO TCP Push Listener nio provider: "+selector.provider().getClass().getCanonicalName());
 	}
 	
 	public void initExecutor() throws Exception{

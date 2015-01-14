@@ -71,6 +71,7 @@ public class NIOTcpConnector implements Runnable {
 		System.out.println("nio tcp connector port:"+port);
 		selector = Selector.open();
 		channel.register(selector, SelectionKey.OP_ACCEPT);
+		System.out.println("NIO TCP Connector nio provider: "+selector.provider().getClass().getCanonicalName());
 	}
 	
 	public void initExecutor() throws Exception{

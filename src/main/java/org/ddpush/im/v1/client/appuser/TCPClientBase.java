@@ -298,7 +298,7 @@ public abstract class TCPClientBase implements Runnable {
 		if(data == null){
 			return;
 		}
-		if(channel == null || channel.isOpen() == false){
+		if(channel == null || channel.isOpen() == false || channel.isConnected() == false){
 			return;
 		}
 		ByteBuffer bb = ByteBuffer.wrap(data);

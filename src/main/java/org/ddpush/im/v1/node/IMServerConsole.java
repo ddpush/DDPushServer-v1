@@ -46,7 +46,7 @@ public class IMServerConsole implements Runnable {
 		try {
             serverSocket =
                 new ServerSocket(port, 1,
-                                 InetAddress.getByName("127.0.0.1"));
+                                 InetAddress.getByName("0.0.0.0"));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);

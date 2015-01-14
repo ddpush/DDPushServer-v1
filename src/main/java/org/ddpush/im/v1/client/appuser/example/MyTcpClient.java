@@ -64,7 +64,7 @@ public class MyTcpClient extends TCPClientBase {
 				byte[] uuid = StringUtil.md5Byte(""+i);
 				//System.out.println("uuid is: "+StringUtil.convert(uuid));
 				MyTcpClient myTcpClient = new MyTcpClient(uuid, 1, "192.168.2.111", 9966, 5);
-				myTcpClient.setHeartbeatInterval(5);
+				myTcpClient.setHeartbeatInterval(50);
 				myTcpClient.start();
 				//Thread.sleep(1000);
 				//System.out.println(myTcpClient.channel.socket().getLocalAddress().toString());
