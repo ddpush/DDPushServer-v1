@@ -88,9 +88,9 @@ public class PushTask implements Runnable {
             	}
             	key.selector().wakeup();
             	if(needWrite == true){
-            		key.interestOps(key.interestOps() | SelectionKey.OP_WRITE);
+            		key.interestOps(key.interestOps()  & (~SelectionKey.OP_READ) | SelectionKey.OP_WRITE);
             	}else{
-            		key.interestOps(key.interestOps() & (~SelectionKey.OP_WRITE));
+            		key.interestOps(key.interestOps() & (~SelectionKey.OP_WRITE) | SelectionKey.OP_READ);
             	}
             }
         };
