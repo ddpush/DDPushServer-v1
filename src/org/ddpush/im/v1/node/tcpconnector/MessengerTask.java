@@ -24,6 +24,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 
+import org.ddpush.im.util.PropertyUtil;
 import org.ddpush.im.v1.node.ClientMessage;
 import org.ddpush.im.v1.node.ClientStatMachine;
 import org.ddpush.im.v1.node.Constant;
@@ -48,7 +49,7 @@ public class MessengerTask implements Runnable {
 	public MessengerTask(NIOTcpConnector listener, SocketChannel channel){
 		this.listener = listener;
 		this.channel = channel;
-		bufferArray = new byte[Constant.CLIENT_MESSAGE_MAX_LENGTH];
+		bufferArray = new byte[Constant.SERVER_MESSAGE_MIN_LENGTH+PropertyUtil.getPropertyInt("PUSH_MSG_MAX_CONTENT_LEN")];
 		buffer = ByteBuffer.wrap(bufferArray);
 		buffer.limit(Constant.CLIENT_MESSAGE_MIN_LENGTH);
 		lastActive = System.currentTimeMillis();

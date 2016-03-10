@@ -30,6 +30,7 @@ public abstract class UDPClientBase implements Runnable {
 	
 	protected DatagramSocket ds;
 	protected long lastSent = 0;
+	protected long lastReceived = 0;
 	protected int remotePort = 9966;
 	protected int appid = 1;
 	protected byte[] uuid;
@@ -220,6 +221,7 @@ public abstract class UDPClientBase implements Runnable {
 			return;
 		}
 		this.receivedPackets++;
+		this.lastReceived = System.currentTimeMillis();
 		this.ackServer(m);
 		if(m.getCmd() == Message.CMD_0x00){
 			return;
@@ -295,6 +297,10 @@ public abstract class UDPClientBase implements Runnable {
 	
 	public long getLastHeartbeatTime(){
 		return lastSent;
+	}
+	
+	public long getLastReceivedTime(){
+		return lastReceived;
 	}
 	
 	/*
